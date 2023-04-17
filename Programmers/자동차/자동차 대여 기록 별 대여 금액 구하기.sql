@@ -16,8 +16,9 @@ ON C.DURATION_TYPE = AB.diff AND AB.CAR_TYPE = C.CAR_TYPE
 ORDER BY FEE DESC, AB.HISTORY_ID DESC
 ;
 
-# <풀이>
-# CAR_RENTAL_COMPANY_CAR, CAR_RENTAL_COMPANY_RENTAL_HISTORY table을 car_id로 join 시킨 뒤 type이 트럭인 것들만 뽑아준다.
-# CAR_RENTAL_COMPANY_DISCOUNT_PLAN의 DURATION_TYPE 비교해주기 위해 case end 통해 조건별로 diff 컬럼 생성
-# 대여기간과 type 조건으로 left join 후 fee 구해줌. (7일 미만은 null 값이기에 COALESCE으로 0으로 초기화)
-# 15번 쥴에 type을 and으로 묶어준 이유 : 7일 미만 얘들이 빠지게 된다.
+-- <풀이>
+-- CAR_RENTAL_COMPANY_CAR, CAR_RENTAL_COMPANY_RENTAL_HISTORY table을 car_id로 join 시킨 뒤 type이 트럭인 것들만 뽑아준다.
+-- CAR_RENTAL_COMPANY_DISCOUNT_PLAN의 DURATION_TYPE 비교해주기 위해 case end 통해 조건별로 diff 컬럼 생성
+-- 대여기간과 type 조건으로 left join 후 fee 구해줌. (7일 미만은 null 값이기에 COALESCE으로 0으로 초기화)
+-- 15번 쥴에 type을 WHERE 절로 따로 빼지 않고 and으로 묶어준 이유 : 7일 미만 얘들이 빠지게 된다.
+ 
