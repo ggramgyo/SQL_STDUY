@@ -1,0 +1,10 @@
+SELECT USER_ID, PRODUCT_ID
+FROM ONLINE_SALE
+GROUP BY USER_ID, PRODUCT_ID
+HAVING COUNT(*) >= 2
+ORDER BY USER_ID, PRODUCT_ID DESC
+;
+
+
+# <풀이>
+# 회원 아이디, 상품 아이디로 그룹 묶어서 카운트 >= 2 (재구매) 출력
